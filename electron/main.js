@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
+const fs = require('fs');
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -13,27 +14,9 @@ function createWindow() {
     win.loadFile(path.join(__dirname, "../dist/index.html"));
 }
 
-const data = [
-    {
-        name: 'Eduardo',
-        age: 35
-    },
-    {
-        name: 'Otávio',
-        age: 30
-    },
-    {
-        name: 'Felipe',
-        age: 32
-    },
-    {
-        name: 'Grazi',
-        age: 80
-    },
-]
-
 const getData = () => {
-    return data
+    const rawData = fs.readFileSync(path.resolve(__dirname, './json/data.json'));
+    return JSON.parse(rawData)
 }
 
 app.whenReady().then(() => {
