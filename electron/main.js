@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
 function createWindow() {
@@ -13,7 +13,31 @@ function createWindow() {
     win.loadFile(path.join(__dirname, "../dist/index.html"));
 }
 
+const data = [
+    {
+        name: 'Eduardo',
+        age: 35
+    },
+    {
+        name: 'Otávio',
+        age: 30
+    },
+    {
+        name: 'Felipe',
+        age: 32
+    },
+    {
+        name: 'Grazi',
+        age: 80
+    },
+]
+
+const getData = () => {
+    return data
+}
+
 app.whenReady().then(() => {
+    ipcMain.handle('getData', getData)
     createWindow();
 
     app.on("activate", () => {
