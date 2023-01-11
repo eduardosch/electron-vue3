@@ -15,7 +15,7 @@ function createWindow() {
 }
 
 const getData = () => {
-    const rawData = fs.readFileSync(path.resolve(__dirname, './json/data.json'));
+    const rawData = fs.readFileSync(path.resolve(__dirname, './json/mock.json'));
     return JSON.parse(rawData)
 }
 

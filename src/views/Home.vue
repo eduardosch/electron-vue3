@@ -1,5 +1,26 @@
 <template>
-    <pre><code v-html="prettyData"/></pre>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>E-mail</th>
+                    <th>Gender</th>
+                    <th>IP Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="row in data" :key="row.id">
+                    <td>{{ row.first_name }}</td>
+                    <td>{{ row.last_name }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>{{ row.gender }}</td>
+                    <td>{{ row.ip_address }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </template>
 
 scrip <script lang="ts">
@@ -49,5 +70,9 @@ pre {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+}
+
+table thead tr th {
+    text-align: left;
 }
 </style>
